@@ -1,25 +1,68 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Images from './../assets/images.png';
+import { FaFacebook } from 'react-icons/fa';
+import { AiFillTwitterCircle } from 'react-icons/ai';
 
-const SignUp = () => {
-	return (
-		<div>
-			<div className='images'>
-				<img src={Images} alt='customer' />
-			</div>
-			<div className='form'>
-				<label>Sign up</label>
-				<div className='form-input'>
-					<label>Email</label>
-					<input type='email' />
-					<label>Password</label>
-					<input type='password' />
+class SignUp extends Component {
+	state = { email: '', password: '' };
+
+	onEmailInput = (e) => {
+		this.setState({
+			email: e.target.value,
+		});
+	};
+
+	onPasswordInput = (e) => {
+		this.setState({
+			password: e.target.value,
+		});
+	};
+
+	onFormSubmit = (e) => {
+		console.log(`${this.state.email} ${this.state.password}`);
+		e.preventDefault();
+	};
+
+	render() {
+		const { email, password } = this.state;
+		return (
+			<div>
+				<div className='images'>
+					<img src={Images} alt='customer' />
 				</div>
-				<button>Sign up</button>
+				<div className='form'>
+					<label>Sign up</label>
+					<div className='form-input'>
+						<form onSubmit={this.onFormSubmit}>
+							<div>
+								<label>Email</label>
+								<input
+									type='email'
+									value={email}
+									onChange={this.onEmailInput}
+								/>
+							</div>
+							<div>
+								<label>Password</label>
+								<input
+									type='password'
+									value={password}
+									onChange={this.onPasswordInput}
+								/>
+							</div>
+							<button>Sign up</button>
+						</form>
+					</div>
+				</div>
+				<div>
+					<h3>
+						or sign up using <FaFacebook /> <AiFillTwitterCircle />
+					</h3>
+					<h3>Already have an account? sign in</h3>
+				</div>
 			</div>
-			<h3>or sign up using </h3>
-		</div>
-	);
-};
+		);
+	}
+}
 
 export default SignUp;
