@@ -26,12 +26,12 @@ class SignUp extends Component {
 	render() {
 		const { email, password } = this.state;
 		return (
-			<div>
+			<div className='sign-up'>
 				<div className='images'>
 					<img src={Images} alt='customer' />
 				</div>
 				<div className='form'>
-					<label>Sign up</label>
+					<h2>Sign up</h2>
 					<div className='form-input'>
 						<form onSubmit={this.onFormSubmit}>
 							<div>
